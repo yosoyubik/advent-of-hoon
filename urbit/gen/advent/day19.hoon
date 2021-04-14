@@ -26,20 +26,22 @@
 ++  part-one
   =<  total
   %+  roll  puzzle-input
-  |=  [e=cord total=@ part=@ rules=(map @ message-rule) =rule]
+  |=  [e=cord total=@ part=@ rules=(map @ message-rule)]
   ?:  =('' e)
-    [total +(part) rules rule]
+    [total +(part) rules]
   ?.  =(0 part)
+    ::  FIXME: don't do this every time
+    ::
     =+  rul=(reduce-rules rules)
-    :_  [part rules rule]
+    :_  [part rules]
     ?^  (rush e rul)
       +(total)
     total
-  [total part (~(put by rules) (parse-rule e)) rule]
-:: 
+  [total part (~(put by rules) (parse-rule e))]
+::
 ++  part-two
   =/  rules-a=(map @ message-rule)
-    ::  0 : 1 | 0 2
+    ::  0 : 1 | 1 0
     ::  1 : 'a'
     ::  2: 'b'
     ::
@@ -49,12 +51,13 @@
         :-  2
         ^-  message-rule  [%char 'b']
         :-  0
-        ^-  message-rule  [%seqs [%or-1-2 [1 [2 0]]]]
+        ^-  message-rule  [%seqs [%or-1-2 [1 [1 0]]]]
     ==
     =/  rules-b=(map @ message-rule)
       ::  0 : 1 2 | 1 0 2
       ::  1 : 'a'
       ::  2: 'b'
+      ::  3 : 1 | 1 3
       ::
       %-  molt
       :~  :-  1
@@ -63,17 +66,43 @@
           ^-  message-rule  [%char 'b']
           :-  0
           ^-  message-rule  [%seqs [%or-2-3 [[1 2] [1 0 2]]]]
+          :-  3
+          ^-  message-rule  [%seqs [%or-1-2 [1 [1 3]]]]
       ==
   =+  rul-a=(reduce-rules rules-a)
   =+  rul-b=(reduce-rules rules-b)
+  ~&
   :*  (rush 'a' rul-a)
-      (rush 'ba' rul-a)
-      (rush 'bbbbbbbbbbbbbbbba' rul-a)
+      (rush 'aa' rul-a)
+      (rush 'aaaaaaaaaaa' rul-a)
     ::
       (rush 'ab' rul-b)
       (rush 'aabb' rul-b)
       (rush 'aaaaaaaaabbbbbbbbb' rul-b)
   ==
+  =<  total
+  %+  roll  puzzle-input
+  |=  [e=cord total=@ part=@ rules=(map @ message-rule)]
+  ?:  =('' e)
+    [total +(part) rules]
+  ?.  =(0 part)
+    ::  FIXME: don't do this every time
+    ::
+    =+  rul=(reduce-rules rules)
+    :_  [part rules]
+    ?^  (rush e rul)
+      +(total)
+    total
+  :+  total
+    part
+  %-  ~(put by rules)
+  =/  [type=@ =message-rule]  (parse-rule e)
+  :-  type
+  ?:  =(type 8)
+    [%seqs %or-1-2 [42 [42 8]]]
+  ?.  =(type 11)
+    message-rule
+  [%seqs %or-2-3 [[42 31] [42 11 31]]]
 ::
 ++  parse-rule
   |=  =cord
@@ -118,7 +147,6 @@
           ::
           %+  stag  %uno
           dem
-          :: (more ace dem)
       ==
     ==
   ==
@@ -127,7 +155,7 @@
   |=  rules=(map @ message-rule)
   =|  i=@
   |-
-  =*  next  $
+  =*  go-to  $
   =+  rule=(~(got by rules) i)
   :: ~&  rule
   ?-    -.rule
@@ -149,18 +177,18 @@
     ::
     ++  compose-uno
       ?>  ?=(uno +.r.rule)
-      next(i +.r.rule)
+      go-to(i +.r.rule)
     ::
     ++  compose-dos
       ?>  ?=(dos +.r.rule)
       ;~  (comp |=([a=tape b=tape] (weld a b)))
         %+  knee  *tape
         |.  ~+
-        next(i a.r.rule)
+        go-to(i a.r.rule)
       ::
         %+  knee  *tape
         |.  ~+
-        next(i b.r.rule)
+        go-to(i b.r.rule)
        ==
     ::
     ++  compose-or-uno
@@ -168,11 +196,11 @@
       ;~  pose
         %+  knee  *tape
         |.  ~+
-        next(i p.r.rule)
+        go-to(i p.r.rule)
       ::
         %+  knee  *tape
         |.  ~+
-        next(i q.r.rule)
+        go-to(i q.r.rule)
       ==
     ::
     ++  compose-or-dos
@@ -185,21 +213,21 @@
         ;~  (comp |=([r=tape s=tape] (weld r s)))
           %+  knee  *tape
           |.  ~+
-          next(i a.left)
+          go-to(i a.left)
         ::
           %+  knee  *tape
           |.  ~+
-          next(i b.left)
+          go-to(i b.left)
         ==
       ::
         ;~  (comp |=([r=tape s=tape] (weld r s)))
           %+  knee  *tape
           |.  ~+
-          next(i a.rite)
+          go-to(i a.rite)
         ::
           %+  knee  *tape
           |.  ~+
-          next(i b.rite)
+          go-to(i b.rite)
         ==
       ==
     ::
@@ -207,55 +235,37 @@
       ?>  ?=(or-1-2 +.r.rule)
       =*  left  p.r.rule
       =*  rite  q.r.rule
-      ;~  pose
+      ;~  (comp |=([r=tape s=tape] (weld r s)))
         %+  knee  *tape
         |.  ~+
-        next(i left)
+        go-to(i a.rite)
       ::
-        ;~  (comp |=([r=tape s=tape] (weld r s)))
+        ;~  pose
           %+  knee  *tape
-          |.  ~+
-          next(i a.rite)
+          |.  ~+  compose-or-1-2
         ::
-          %+  knee  *tape
-          |.  ~+
-          %^  stir  *tape
-            weld
-          compose-or-1-2
+          (easy ~)
         ==
       ==
     ::
     ++  compose-or-2-3
       ?>  ?=(or-2-3 +.r.rule)
       =*  left  p.r.rule
-      =*  rite  q.r.rule
-      ;~  pose
-        ;~  (comp |=([r=tape s=tape] (weld r s)))
+      ;~  (comp |=([r=tape s=tape] (weld r s)))
+        %+  knee  *tape
+        |.  ~+
+        go-to(i a.left)
+      ::
+        ;~  pose
           %+  knee  *tape
-          |.  ~+
-          next(i a.left)
+          |.  ~+  compose-or-2-3
         ::
-          %+  knee  *tape
-          |.  ~+
-          next(i b.left)
+          (easy ~)
         ==
       ::
-        ;~  (comp |=([r=tape s=tape] (weld r s)))
-          %+  knee  *tape
-          |.  ~+
-          next(i a.rite)
-        ::
-          %+  knee  *tape
-          |.  ~+
-          %^  stir  *tape
-            welp
-          compose-or-2-3
-          :: next(i b.rite)
-        ::
-          %+  knee  *tape
-          |.  ~+
-          next(i c.rite)
-        ==
+        %+  knee  *tape
+        |.  ~+
+        go-to(i b.left)
       ==
     --
   ==
