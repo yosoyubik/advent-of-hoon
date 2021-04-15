@@ -1,4 +1,7 @@
+:: --- Day 2: Password Philosophy ---
+::
 /*  puzzle-input  %txt  /lib/advent/day2/txt
+::
 :-  %say
 |=  *
 =<  [%noun part-two]

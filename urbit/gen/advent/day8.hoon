@@ -1,4 +1,6 @@
-/*  puzzle-input  %txt  /lib/advent/day8/txt 
+:: --- Day 8: Handheld Halting ---
+:: 
+/*  puzzle-input  %txt  /lib/advent/day8/txt
 =/  max=@  (sub (lent ^-(wain puzzle-input)) 1)
 ::
 :-  %say

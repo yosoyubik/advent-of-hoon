@@ -1,9 +1,10 @@
+:: --- Day 13: Shuttle Search ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day13/txt     
+/*  puzzle-input  %txt  /lib/advent/day13/txt
 ::
 :-  %say
 |=  *
-=<  :-  %noun 
+=<  :-  %noun
     [[%1 part-one] [%2 part-two-fast]]
 |%
 ++  get-closest
@@ -40,31 +41,31 @@
     =;  [id=@ time=@]
       ^-  @
       ~&  [id time]
-      (mul (sub time departure) id)  
-    =<  -  
+      (mul (sub time departure) id)
+    =<  -
     %+  sort  [(get-closest (mul (div departure bus) bus) bus departure) ans]
     |=  [[@ time-a=@] [@ time-b=@]]
     (lth time-a time-b)
   ans
 ::
-++  part-two-slow 
-  :: t mod a = 0, 
-  :: t+1 mod b = 0, 
-  :: t+4 mod c = 0, 
-  :: t+6 mod d = 0, 
+++  part-two-slow
+  :: t mod a = 0,
+  :: t+1 mod b = 0,
+  :: t+4 mod c = 0,
+  :: t+6 mod d = 0,
   :: t+7 mod e = 0
   :: ...
   ?>  ?=([cord cord ~] puzzle-input)
   =/  buses=(list [id=@ inc=@])
     %-  flop
     =<  incs
-    %+  roll  (rash i.t.puzzle-input (more com ;~(pose dem (cold 0 (just 'x'))))) 
-    |=  [bus=@ i=@ incs=(list [@ @])] 
+    %+  roll  (rash i.t.puzzle-input (more com ;~(pose dem (cold 0 (just 'x')))))
+    |=  [bus=@ i=@ incs=(list [@ @])]
     :-  +(i)
     ?:  =(bus 0)  incs
     [[bus i] incs]
   ?>  ?=(^ buses)
-  =/  first-cond  i.buses  
+  =/  first-cond  i.buses
   =/  timestamp  id.i.buses
   |-  ^-  @
   ?:  ?&  =(0 (mod timestamp id.first-cond))
@@ -73,20 +74,20 @@
     timestamp
   $(timestamp (add timestamp id.first-cond))
 ::
-++  part-two-fast 
-  :: t mod a = 0, 
-  :: (t + a)+1 mod b = 0, 
-  :: (t + a * b)+ 4 mod c = 0, 
-  :: (t + a * b * c) + 6 mod d = 0, 
+++  part-two-fast
+  :: t mod a = 0,
+  :: (t + a)+1 mod b = 0,
+  :: (t + a * b)+ 4 mod c = 0,
+  :: (t + a * b * c) + 6 mod d = 0,
   :: (t + a * b * c + d)+7 mod e = 0
   :: ...
   ?>  ?=([cord cord ~] puzzle-input)
   =/  buses=(list [id=@ inc=@])
     =;  parsed
-      %-  flop   
+      %-  flop
       =<  incs
-      %+  roll  parsed 
-      |=  [bus=@ i=@ incs=(list [@ @])] 
+      %+  roll  parsed
+      |=  [bus=@ i=@ incs=(list [@ @])]
       :-  +(i)
       ?:  =(bus 0)  incs
       [[bus i] incs]

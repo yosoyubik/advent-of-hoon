@@ -1,3 +1,5 @@
+:: --- Day 1: Report Repair ---
+:: 
 /+  *advent-day1
 ::
 :-  %say

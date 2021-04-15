@@ -1,4 +1,7 @@
+:: --- Day 3: Toboggan Trajectory ---
+::
 /*  puzzle-input  %txt  /lib/advent/day3/txt
+::
 :-  %say
 |=  *
 =<  [%noun part-two]

@@ -1,3 +1,5 @@
+:: --- Day 11: Seating System ---
+::
 /*  puzzle-input  %txt  /lib/advent/day11/txt
 =/  max=@  (lent ^-(wain puzzle-input))
 ::

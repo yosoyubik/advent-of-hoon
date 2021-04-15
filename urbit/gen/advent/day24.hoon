@@ -1,3 +1,5 @@
+:: --- Day 24: Lobby Layout ---
+::
 /*  puzzle-input  %txt  /lib/advent/day24/txt
 ::
 :-  %say

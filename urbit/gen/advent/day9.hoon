@@ -1,3 +1,5 @@
+:: --- Day 9: Encoding Error ---
+::
 /*  puzzle-input  %txt  /lib/advent/day9/txt
 =/  max=@  (sub (lent ^-(wain puzzle-input)) 1)
 =+  pre-size=25

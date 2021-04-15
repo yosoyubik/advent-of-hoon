@@ -1,4 +1,6 @@
-/*  puzzle-input  %txt  /lib/advent/day14/txt  
+:: --- Day 14: Docking Data ---
+::
+/*  puzzle-input  %txt  /lib/advent/day14/txt
 ::
 :-  %say
 |=  *

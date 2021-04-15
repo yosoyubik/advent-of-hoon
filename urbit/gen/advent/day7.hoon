@@ -1,3 +1,5 @@
+:: --- Day 7: Handy Haversacks ---
+:: 
 /*  puzzle-input  %txt  /lib/advent/day7/txt
 =/  max=@  (sub (lent ^-(wain puzzle-input)) 1)
 ::
