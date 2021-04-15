@@ -61,7 +61,7 @@
   %+  rash  r
   ;~  plug
       (star ;~(pose alf ace))
-      col ace dem hep dem ace (jest 'or') ace dem hep dem
+      col  ace   dem  hep  dem  ace  (jest 'or')  ace  dem  hep  dem
   ==
 ::
 ++  part-two
