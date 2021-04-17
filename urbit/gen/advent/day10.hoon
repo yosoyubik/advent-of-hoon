@@ -1,12 +1,13 @@
 :: --- Day 10: Adapter Array ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day10/txt 
+/*  puzzle-input  %txt  /lib/advent/day10/txt
 =/  max=@  (sub (lent ^-(wain puzzle-input)) 1)
 ::
 :-  %say
 |=  *
 =<  :-  %noun
-    [[%1 part-one] [%2 part-two]]
+    :-  [%1 part-one]
+    [%2 [memo+part-two-memo cache+part-two-cache]]
 |%
 ++  sort-down
   |=  adapters=(list @)
@@ -44,7 +45,7 @@
     jolt  (add diff jolt)
   ==
 ::
-++  part-two
+++  part-two-memo
   ::                      11  12 15  16  19
   ::           5 6 7 10
   ::                        12  15  16  19
@@ -59,21 +60,18 @@
   ::
   =/  adapters=(list @)  [0 sort-puzzle]
   =|  memo=(map node=@ ways=@)
-  ~&  "begin"
+  ~&  "begin memo"
   =<  total
   |-  ^-  [total=@ m=_memo]
   =*  count  $
   ?~  adapters  !!
   =*  i  i.adapters
-  :: ~&  adapters
   ?:  (lte (lent adapters) 1)
-    :: ~&  %done
     [1 (~(put by memo) [i 1])]
   =+  cached=(~(get by memo) i)
   ?^  cached
     [u.cached memo]
   =;  [total=@ memo=(map @ @)]
-    :: ~&  [node=i total]
     :-  total
     (~(put by memo) [i.adapters total])
   ?:  ?&  ?=([@ @ @ @ *] adapters)
@@ -81,7 +79,6 @@
           (lte (sub i.t.t.adapters i) 3)
           (lte (sub i.t.t.t.adapters i) 3)
       ==
-    :: ~&  [i %launch-3]
     =+  a=count(adapters t.adapters)
     =+  b=count(adapters t.t.adapters, memo m:a)
     =+  c=count(adapters t.t.t.adapters, memo m:b)
@@ -91,7 +88,6 @@
           (lte (sub i.t.adapters i) 3)
           (lte (sub i.t.t.adapters i) 3)
       ==
-    :: ~&  [i %launch-2]
     =+  a=count(adapters t.adapters)
     =+  b=count(adapters t.t.adapters, memo m:a)
     :_  m:b
@@ -100,6 +96,37 @@
           (lte (sub i.t.adapters i) 3)
       ==
     [0 memo]
-  :: ~&  [i %launch-1]
   count(adapters t.adapters)
+::
+++  part-two-cache
+  =/  adapters=(list @)  [0 sort-puzzle]
+  ~&  "begin cache"
+  |-  ^-  @
+  =*  count  $
+  ?~  adapters  !!
+  =*  i  i.adapters
+  ?:  (lte (lent adapters) 1)
+    1
+  ?:  ?&  ?=([@ @ @ @ *] adapters)
+          (lte (sub i.t.adapters i) 3)
+          (lte (sub i.t.t.adapters i) 3)
+          (lte (sub i.t.t.t.adapters i) 3)
+      ==
+    ;:  add
+      ~+(count(adapters t.adapters))
+      ~+(count(adapters t.t.adapters))
+      ~+(count(adapters t.t.t.adapters))
+    ==
+  ?:  ?&  ?=([@ @ @ *] adapters)
+          (lte (sub i.t.adapters i) 3)
+          (lte (sub i.t.t.adapters i) 3)
+      ==
+    %+  add
+      ~+(count(adapters t.adapters))
+    ~+(count(adapters t.t.adapters))
+  ?.  ?&  ?=([@ @ *] adapters)
+          (lte (sub i.t.adapters i) 3)
+      ==
+    0
+  ~+(count(adapters t.adapters))
 --
