@@ -1,6 +1,6 @@
 :: --- Day 23: Crab Cups ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day23/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day23/txt
 ::
 :-  %say
 |=  *

@@ -1,6 +1,6 @@
 :: --- Day 18: Operation Order ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day18/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day18/txt
 ::
 :-  %say
 |=  *

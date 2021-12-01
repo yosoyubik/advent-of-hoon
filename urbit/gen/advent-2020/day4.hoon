@@ -1,6 +1,6 @@
 :: --- Day 4: Passport Processing ---
-:: 
-/*  puzzle-input  %txt  /lib/advent/day4/txt
+::
+/*  puzzle-input  %txt  /lib/advent-2020/day4/txt
 ::
 :-  %say
 |=  *

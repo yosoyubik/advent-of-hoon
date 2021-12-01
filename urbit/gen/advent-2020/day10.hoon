@@ -1,6 +1,6 @@
 :: --- Day 10: Adapter Array ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day10/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day10/txt
 =/  max=@  (sub (lent ^-(wain puzzle-input)) 1)
 ::
 :-  %say

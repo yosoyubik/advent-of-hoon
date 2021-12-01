@@ -1,6 +1,6 @@
 :: --- Day 14: Docking Data ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day14/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day14/txt
 ::
 :-  %say
 |=  *

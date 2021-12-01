@@ -1,6 +1,6 @@
 :: --- Day 6: Custom Customs ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day6/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day6/txt
 =/  max=@  (sub (lent ^-(wain puzzle-input)) 1)
 ::
 :-  %say

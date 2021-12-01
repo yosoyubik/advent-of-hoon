@@ -1,6 +1,6 @@
 :: --- Day 16: Ticket Translation ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day16/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day16/txt
 ::
 :-  %say
 |=  *

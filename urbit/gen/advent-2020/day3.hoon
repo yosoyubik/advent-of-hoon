@@ -1,6 +1,6 @@
 :: --- Day 3: Toboggan Trajectory ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day3/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day3/txt
 ::
 :-  %say
 |=  *

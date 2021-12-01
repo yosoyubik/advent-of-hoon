@@ -1,6 +1,6 @@
 :: --- Day 13: Shuttle Search ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day13/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day13/txt
 ::
 :-  %say
 |=  *

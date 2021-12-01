@@ -1,6 +1,6 @@
 :: --- Day 25: Combo Breaker ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day25/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day25/txt
 ::
 :-  %say
 |=  *

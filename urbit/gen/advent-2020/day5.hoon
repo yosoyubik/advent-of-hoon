@@ -1,6 +1,6 @@
 :: --- Day 5: Binary Boarding ---
-:: 
-/*  puzzle-input  %txt  /lib/advent/day5/txt
+::
+/*  puzzle-input  %txt  /lib/advent-2020/day5/txt
 =/  rows  128
 =/  cols  8
 ::

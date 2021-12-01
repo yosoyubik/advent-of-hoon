@@ -1,6 +1,6 @@
 :: --- Day 20: Jurassic Jigsaw ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day20/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day20/txt
 ::
 :-  %say
 |=  *

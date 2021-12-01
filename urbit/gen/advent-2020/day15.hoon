@@ -1,6 +1,6 @@
 :: --- Day 15: Rambunctious Recitation ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day15/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day15/txt
 ::
 :-  %say
 |=  *

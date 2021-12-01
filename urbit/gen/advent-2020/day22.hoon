@@ -1,6 +1,6 @@
 :: --- Day 22: Crab Combat ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day22/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day22/txt
 ::
 :-  %say
 |=  *

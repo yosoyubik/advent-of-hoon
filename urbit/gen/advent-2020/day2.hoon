@@ -1,6 +1,6 @@
 :: --- Day 2: Password Philosophy ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day2/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day2/txt
 ::
 :-  %say
 |=  *

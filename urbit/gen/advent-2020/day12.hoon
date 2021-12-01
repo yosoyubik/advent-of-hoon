@@ -1,6 +1,6 @@
 :: --- Day 12: Rain Risk ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day12/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day12/txt
 =/  max=@  (sub (lent ^-(wain puzzle-input)) 1)
 ::
 :-  %say

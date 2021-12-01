@@ -1,6 +1,6 @@
 :: --- Day 21: Allergen Assessment ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day21/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day21/txt
 ::
 :-  %say
 |=  *

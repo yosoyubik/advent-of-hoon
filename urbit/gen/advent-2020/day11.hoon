@@ -1,6 +1,6 @@
 :: --- Day 11: Seating System ---
 ::
-/*  puzzle-input  %txt  /lib/advent/day11/txt
+/*  puzzle-input  %txt  /lib/advent-2020/day11/txt
 =/  max=@  (lent ^-(wain puzzle-input))
 ::
 :-  %say
