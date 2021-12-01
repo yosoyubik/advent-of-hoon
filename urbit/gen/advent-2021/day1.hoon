@@ -12,8 +12,8 @@
   %+  roll  puzzle-input
   |=  [line=@t current=@ incs=@]
   =+  parsed=(rash line dem)
-  ?:  =(current 0)  [parsed incs]
   :-  parsed
+  ?:  =(current 0)  incs
   ?.((gth parsed current) incs +(incs))
 ::
 ++  part-two
@@ -26,8 +26,7 @@
   =?  c.window  =(2 window-i)  parsed
   ?:  (lth i 3)  [+(i) window prev-sum incs]
   =,  window
-  =/  sum  :(add a b c)
-  =/  incs
-    ?:  (gth sum prev-sum)  +(incs)  incs
+  =/  sum   :(add a b c)
+  =?  incs  (gth sum prev-sum)  +(incs)
   [+(i) window sum incs]
 --
