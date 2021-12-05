@@ -3,10 +3,7 @@
 /*  puzzle-input  %txt  /lib/advent-2021/day5/txt
 ::
 =>  |%
-    :: +$  item   [n=@ marked=?]
-    :: +$  row    (map c=@ item)
     +$  board  (map [x=@ y=@] counts=@)
-    :: +$  index  (map [b=@ n=@] [r=@ c=@])
     --
 ::
 :-  %say
